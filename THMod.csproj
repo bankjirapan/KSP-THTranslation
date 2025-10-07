@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <OutputType>Library</OutputType>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>false</ImplicitUsings>
+    <Deterministic>false</Deterministic>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>bin/$(Configuration)/</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net472" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="UnityEngine.IMGUIModule">
+  <HintPath>/Volumes/WDGreenSSD/SteamLibrary/steamapps/common/Kerbal Space Program/KSP.app/Contents/Resources/Data/Managed/UnityEngine.IMGUIModule.dll</HintPath>
+  <Private>false</Private>
+</Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>/Volumes/WDGreenSSD/SteamLibrary/steamapps/common/Kerbal Space Program/KSP.app/Contents/Resources/Data/Managed/Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>/Volumes/WDGreenSSD/SteamLibrary/steamapps/common/Kerbal Space Program/KSP.app/Contents/Resources/Data/Managed/UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>/Volumes/WDGreenSSD/SteamLibrary/steamapps/common/Kerbal Space Program/KSP.app/Contents/Resources/Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>/Volumes/WDGreenSSD/SteamLibrary/steamapps/common/Kerbal Space Program/KSP.app/Contents/Resources/Data/Managed/UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>/Volumes/WDGreenSSD/SteamLibrary/steamapps/common/Kerbal Space Program/KSP.app/Contents/Resources/Data/Managed/UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="Build">
+    <MakeDir Directories="./Plugins" />
+    <Copy SourceFiles="$(TargetDir)/THMod.dll"
+          DestinationFolder="./Plugins"
+          SkipUnchangedFiles="true" />
+  </Target>
+</Project>
